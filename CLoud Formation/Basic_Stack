@@ -1,0 +1,43 @@
+AWSTemplateFormatVersion: "2019-05-05"
+
+Description:
+  Cloud formation Stack
+  
+Metadata:
+  TemplateAuthor: "Shashank"
+  AWS::CloudFormation::Interface:
+    ParameterGroups:
+      - Label:
+          default: "Deployment"
+        Parameters:
+          - "Environment"
+      - Label:
+          default: "Options"
+        Parameters:
+          - "ChangeOrder"
+          - "BlueGreen"
+    ParametersLabels:
+      Environment:
+        default: "Environment:"
+      
+
+Parameters:
+  Environment:
+    Description: "Choose an environment to deploy into"
+    Type: String
+    AllowedValues:
+      - "Prod"
+      - "QA"
+    Default: "QA"
+  ChangeOrder:
+    Description: "PRODUCTION ONLY - CO Number"
+    Type: String
+    Default: "C01234567"
+  BlueGreen:
+    Description: "Alternate between BLUE and GREEN to delineate your refreshes."
+    Type: String
+    AllowedValues:
+      - "blue"
+      - "green"
+    Default: "blue"
+
